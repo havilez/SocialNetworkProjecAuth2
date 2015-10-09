@@ -2,12 +2,20 @@ var router = require('express').Router()
 var Post = require('../../models/post')
 
 router.get('/posts', function (req, res, next) {
-  Post.find()
-  .sort('-date')
-  .exec(function (err, posts) {
-    if (err) { return next(err) }
-    res.json(posts)
-  })
+
+
+
+  if ("auth" in req ) {
+    Post.find({username: req.auth.username})
+        .sort('-date')
+        .exec(function (err, posts) {
+          if (err) {
+            return next(err)
+          }
+          res.json(posts)
+        })
+  }
+ // else return next()
 })
 
 router.post('/posts', function (req, res, next) {
