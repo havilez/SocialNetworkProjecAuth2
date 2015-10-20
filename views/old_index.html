@@ -7,9 +7,19 @@
     <link rel='stylesheet' href='/css/app.css'>
 </head>
 <body ng-controller='ApplicationCtrl as app'>
-<main-nav class="navbar navbar-default"></main-nav>
 
-
+<nav class='navbar navbar-default'>
+    <div class='container'>
+        <ul class='nav navbar-nav'>
+            <li><a href='/#/'>Posts</a></li>
+            <li><a href='/#/register'>Register</a></li>
+            <li><a href='/#/login'>Login</a></li>
+        </ul>
+        <p ng-if='app.currentUser' class='navbar-text navbar-right'>
+            Signed in as {{app.currentUser.username}}
+        </p>
+    </div>
+</nav>
 <div class='container' ng-view></div>
 <script src="/vendor/angular/angular.js" ></script>
 <script src="/vendor/angular-route/angular-route.js"></script>
@@ -21,8 +31,6 @@
 <script src='/ng/register.ctrl.js'></script>
  <script src='/ng/routes.js'></script>
  <script src='/ng/user.svc.js'></script>
-<script src="/ng/main_nav/main_nav.js"></script>
-<script src="/ng/aain_nav/nav_svc.js"></script>
 
 </body>
 </html>
